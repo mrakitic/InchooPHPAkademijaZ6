@@ -5,8 +5,9 @@ class Post
     private $id;
     private $content;
     private $time;
+    private $image;
 
-    public function __construct($id, $content, $time)
+    public function __construct($id, $content, $time , $image)
     {
         $this->setId($id);
         $this->setContent($content);
@@ -14,6 +15,7 @@ class Post
         date_timezone_set($date,timezone_open('Europe/Zagreb'));
         $date=date_format($date,'d.m.Y.H:i');
         $this->setTime($date);
+        $this->setImage($image);
 
     }
 
@@ -46,7 +48,7 @@ class Post
         $statement = $db->prepare("select * from post order by id desc ");
         $statement->execute();
         foreach ($statement->fetchAll() as $post) {
-            $list[] = new Post($post->id, $post->content, $post->time);
+            $list[] = new Post($post->id, $post->content, $post->time, $post->image);
         }
         return $list;
     }
@@ -59,6 +61,6 @@ class Post
         $statement->bindValue('id', $id);
         $statement->execute();
         $post = $statement->fetch();
-        return new Post($post->id, $post->content, $post->time);
+        return new Post($post->id, $post->content, $post->time, $post->image);
     }
 }

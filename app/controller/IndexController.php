@@ -59,7 +59,7 @@ class IndexController
     }
 
     public static function imageUpload($id){
-        $target_dir="images/";
+        $target_dir="app/images/";
         $name= basename($_FILES["fileToUpload"]["name"]);
         $target_file = $target_dir .$name;
 
