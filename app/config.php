@@ -8,6 +8,6 @@ return [
     "host"=>"localhost",
     "name"=>"social_network",
     "user"=>"matija",
-    "password"=>"l.messi.10"
+   
     ]
 ];
